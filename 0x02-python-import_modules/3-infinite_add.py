@@ -1,8 +1,6 @@
 #!/usr/bin/python3
 if __name__ == "__main__":
     import sys
-    if len(sys.argv) < 3:
-        sys.exit(1)
 
     res = 0
 
