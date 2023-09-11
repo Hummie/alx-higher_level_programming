@@ -5,5 +5,7 @@ def print_matrix_integer(matrix=[[]]):
 
     for row in range(num_rows):
         for colu in range(num_colu):
+            if colu != 0:
+                print(" ", end='')
             print("{:2d}".format(matrix[row][colu]), end=' ')
         print()
