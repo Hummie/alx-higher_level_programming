@@ -54,8 +54,10 @@ class Rectangle:
         '''Returns a printable string representation of rectangle'''
         if self.__width == 0 or self.__height == 0:
             return ("")
-        
-        result = ""
-        for i in range(self.height):
-            result += "#" * self.width + "\n"
-        return result
+
+        rect = []
+        for i in range(self.__height):
+            [rect.append('#') for j in range(self.__width)]
+            if i != self.__height - 1:
+                rect.append("\n")
+        return ("".join(rect))
