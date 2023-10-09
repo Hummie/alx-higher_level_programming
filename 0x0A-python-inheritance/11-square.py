@@ -10,7 +10,7 @@ class Square(Rectangle):
     def __init__(self, size):
         '''Initialisation of square'''
         self.__size = size
-        super().__init__(self.__size, self.__size)
+        super().__init__(size, size)
 
     def __str__(self):
         return ("[Square] " + str(self.__size) + "/" + str(self.__size))
