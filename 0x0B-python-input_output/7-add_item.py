@@ -8,12 +8,12 @@ save_file = __import__('5-save_to_json_file').save_to_json_file
 
 
 try:
-    item_list = load_file('add_item.json')
+    json_list = load_file('add_item.json')
 except (ValueError, FileNotFoundError):
-    item_list =[]
+    json_list = []
 
 for item in argv[1:]:
-    item_list.extend(item)
+    json_list.append(item)
 
-save_file(item_list, 'add_item.json')
+save_file(json_list, 'add_item.json')
     
