@@ -110,8 +110,10 @@ class Rectangle(Base):
 
     def display(self):
         '''Prints rectangle in standard output using #'''
+        for _ in range(self.__y):
+            print()
         for _ in range(self.__height):
-            print("#" * self.__width)
+            print("" * self.__x + "#" * self.__width)
 
     def __str__(self):
         '''Returns a string representatin of rectangle'''
