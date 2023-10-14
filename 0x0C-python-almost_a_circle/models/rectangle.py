@@ -21,66 +21,82 @@ class Rectangle(Base):
         self.y = y
         super().__init__(id)
 
-        @property
-        def width(self):
-            '''Retrieves the width
-            Returns:
-                int:Width of rectangle
-            '''
-            return self.__width
+    @property
+    def width(self):
+        '''Retrieves the width
+        Returns:
+            int:Width of rectangle
+        '''
+        return self.__width
 
-        @width.setter
-        def width(self, value):
-            '''Sets the width of the rectangle
-            Args:
-                Value (int):Width of the rectangle
-            '''
-            self.__width = value
+    @width.setter
+    def width(self, value):
+        '''Sets the width of the rectangle
+        Args:
+            Value (int):Width of the rectangle
+        '''
+        if not isinstance(value, int):
+            raise TypeError("width must be an integer")
+        if value <= 0:
+            raise ValueError("width must be > 0")
+        self.__width = value
 
-        @property
-        def height(self):
-            '''Retrieves the height
-            Returns:
-                int:Height of rectangle
-            '''
-            return self.__height
+    @property
+    def height(self):
+        '''Retrieves the height
+        Returns:
+            int:Height of rectangle
+        '''
+        return self.__height
 
-        @height.setter
-        def height(self, value):
-            '''Sets the height of the rectangle
-            Args:
-                value (int):Height of the rectangle
-            '''
-            self.__height = value
+    @height.setter
+    def height(self, value):
+        '''Sets the height of the rectangle
+        Args:
+            value (int):Height of the rectangle
+        '''
+        if not isinstance(value, int):
+            raise TypeError("height must be an integer")
+        if value <= 0:
+            raise ValueError("height must be > 0")
+        self.__height = value
 
-        @property
-        def x(self):
-            '''Gets the value of x
-            Returns:
-                int:Value of x
-            '''
-            self.__x
+    @property
+    def x(self):
+        '''Gets the value of x
+        Returns:
+            int:Value of x
+        '''
+        return self.__x
 
-        @x.setter
-        def x(self, value):
-            '''Sets the value of x
-            Args:
-                Value (int):x
-            '''
-            self.__x
+    @x.setter
+    def x(self, value):
+        '''Sets the value of x
+        Args:
+            Value (int):x
+        '''
+        if type(value) != int:
+            raise TypeError("x must be an integer")
+        if value  < 0:
+            raise ValueError("x must be >= 0")
+        self.__x = value
 
-        @property
-        def y(self):
-            '''Gets y
-            Returns:
-                int:Value of y
-            '''
-            self.__y
+    @property
+    def y(self):
+        '''Gets y
+        Returns:
+            int:Value of y
+        '''
+        return self.__y
 
-        @y.setter
-        def y(self, value):
-            ''' Sets the value of y
-            Args:
-                value (int):y
-            '''
-            self.__y
+    @y.setter
+    def y(self, value):
+        ''' Sets the value of y
+        Args:
+            value (int):y
+        '''
+        if type(value) != int:
+            raise TypeError("y must be an integer")
+        if value  < 0:
+            raise ValueError("y must be >= 0")
+        self.__y = value
