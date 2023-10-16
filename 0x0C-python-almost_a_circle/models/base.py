@@ -50,3 +50,79 @@ class Base:
 
         with open(filename, 'w') as f:
             f.write(lists)
+
+    @staticmethod
+    def from_json_string(json_string):
+        """ Returns the list of the JSON string representation json_string.
+
+        Args:
+            json_string (str): _description_
+
+        Returns:
+            list: JSON string representation json_string
+        """
+        if json_string is None or len(json_string) == 0:
+            return []
+        return(json.loads(json_string))
+
+    @classmethod
+    def create(cls, **dictionary):
+        """Returns an instance with all attributes already set.
+
+        Args:
+            dictionary (dict): double pointer to a dictionary.
+            cls (any): class.
+
+        To use the update method to assign all attributes, you must,
+        create a “dummy” instance before:
+        Create a Rectangle or Square instance with “dummy” mandatory,
+        attributes (width, height, size, etc.),
+        Call update instance method to this “dummy” instance to apply your,
+        real values.
+        You must use the method def update(self, *args, **kwargs).
+        **dictionary must be used as **kwargs of the method update.
+        You are not allowed to use eval.
+
+        Returns:
+            list: an instance with all attributes already set.
+        """
+        if cls.__name__ == "Rectangle":
+            dummy = cls(1, 1)
+        if cls.__name__ == "Square":
+            dummy = cls(1)
+        dummy.update(**dictionary)
+
+        # print("cls type --> {}".format(type(cls)))
+        return(dummy)
+
+    @classmethod
+    def load_from_file(cls):
+        """Returns a list of instances.
+
+        If the file doesn’t exist, return an empty list.
+        Otherwise, return a list of instances - the type of these instances,
+        depends on cls (current class using this method).
+        You must use the from_json_string and create methods (implemented,
+        previously).
+        Args:
+            cls (any): class.
+
+        Returns:
+            list: list of instances.
+        """
+        filename = "{}.json".format(cls.__name__)
+
+        if os.path.exists(filename) is False:
+            return []
+
+        with open(filename, 'r') as f:
+            list_str = f.read()
+
+        list_cls = cls.from_json_string(list_str)
+        list_ins = []
+
+        for index in range(len(list_cls)):
+            list_ins.append(cls.create(**list_cls[index]))
+
+        return list_ins
+
