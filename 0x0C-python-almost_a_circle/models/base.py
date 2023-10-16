@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 '''Base module that all functions inherit from'''
 import json
+import os
 
 
 class Base:
